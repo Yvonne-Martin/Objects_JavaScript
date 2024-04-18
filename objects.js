@@ -25,18 +25,17 @@ const products = [
 
 //QUESTION3
 function sortStudents(students){
-    students.map(student =>{
-        const studentsScore = student.scores
-        const sum = studentsScore.reduce((acc, curr)=>acc + curr);
-        const average = sum / studentsScore.length
-        if(average>= 85){
-            console.log(Array(student.name,average));
-        }
-        else{
-            console.log("below average");
-        }
-    })
-  }
+  // Use map to calculate the average test score for each student
+  const averagesScores = students.map(student => {
+    const sum = student.scores.reduce((acc, score) => acc + score);
+    return { name: student.name, average: sum / student.scores.length };
+  });
+  const topAverages = averagesScores.filter(student => student.average >= 85);
+  console.log(topAverages);
+
+}
+
+
    const students = [
     { name: 'John', scores: [90, 80, 85] },
     { name: 'Jane', scores: [95, 92, 88] },
